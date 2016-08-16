@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         t.increments('id').primary();
         t.string('name').notNullable().unique();
         t.string('cron_pattern').notNullable();
+        t.string('base_branch').notNullable();
 
         t.timestamps();
       });

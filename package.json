@@ -2,9 +2,15 @@
   "name": "lawnba",
   "version": "0.0.1",
   "description": "lawnba",
+  "private": true,
   "scripts": {
+    "watch": "watchify -vd -p browserify-hmr -e client/main.js -o public/build.js",
+    "build:js": "cross-env NODE_ENV=production browserify -g envify client/main.js | uglifyjs -c warnings=false -m > public/build.js",
+    "build:css": "cp ./node_modules/bulma/css/bulma.css public/",
+    "build": "npm-run-all --parallel build:js build:css",
     "start": "node ./bin/server.js",
-    "db:migrate": "knex migrate:latest"
+    "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",
@@ -23,7 +29,26 @@
     "mysql": "^2.11.1"
   },
   "devDependencies": {
+    "babel-core": "^6.13.2",
     "babel-eslint": "^6.1.2",
-    "eslint": "^3.3.0"
+    "babel-preset-es2015": "^6.13.2",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "browserify-hmr": "^0.3.1",
+    "bulma": "^0.1.2",
+    "cross-env": "^2.0.0",
+    "envify": "^3.4.1",
+    "eslint": "^3.3.0",
+    "npm-run-all": "^2.3.0",
+    "uglify-js": "^2.7.1",
+    "vue": "^2.0.0-rc.2",
+    "vueify": "^9.2.4",
+    "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
   }
 }
