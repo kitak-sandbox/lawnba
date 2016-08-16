@@ -1,0 +1,29 @@
+{
+  "name": "lawnba",
+  "version": "0.0.1",
+  "description": "lawnba",
+  "scripts": {
+    "start": "node ./bin/server.js",
+    "db:migrate": "knex migrate:latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kitak-sandbox/lawnba.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kitak-sandbox/lawnba/issues"
+  },
+  "homepage": "https://github.com/kitak-sandbox/lawnba#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knex": "^0.11.10",
+    "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.0"
+  }
+}
