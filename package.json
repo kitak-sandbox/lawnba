@@ -24,8 +24,11 @@
   "homepage": "https://github.com/kitak-sandbox/lawnba#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cron": "^1.1.0",
     "express": "^4.14.0",
+    "express-validator": "^2.20.8",
     "knex": "^0.11.10",
+    "moment": "^2.14.1",
     "mysql": "^2.11.1"
   },
   "devDependencies": {
@@ -43,7 +46,8 @@
     "uglify-js": "^2.7.1",
     "vue": "^2.0.0-rc.2",
     "vueify": "^9.2.4",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "browserify": {
     "transform": [

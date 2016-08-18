@@ -8,7 +8,7 @@
       </div>
       <div class="nav-right nav-menu">
         <span class="nav-item">
-          <a href="#" class="button is-inverted is-medium is-primary">
+          <a href="javascript: void(0);" class="button is-inverted is-medium is-primary" @click="onClickAddingRepo">
             <span>リポジトリを追加</span>
           </a>
         </span>
@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  props: ['onClickAddingRepo'],
   data () {
     return {}
   }

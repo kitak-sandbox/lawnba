@@ -812,6 +812,11 @@
       "from": "create-hmac@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.4.tgz"
     },
+    "cron": {
+      "version": "1.1.0",
+      "from": "cron@*",
+      "resolved": "https://registry.npmjs.org/cron/-/cron-1.1.0.tgz"
+    },
     "cross-env": {
       "version": "2.0.0",
       "from": "cross-env@>=2.0.0 <3.0.0",
@@ -1201,6 +1206,18 @@
       "version": "4.14.0",
       "from": "express@>=4.14.0 <5.0.0",
       "resolved": "https://registry.npmjs.org/express/-/express-4.14.0.tgz"
+    },
+    "express-validator": {
+      "version": "2.20.8",
+      "from": "express-validator@*",
+      "resolved": "https://registry.npmjs.org/express-validator/-/express-validator-2.20.8.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "4.13.1",
+          "from": "lodash@>=4.13.0 <4.14.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz"
+        }
+      }
     },
     "extend": {
       "version": "3.0.0",
@@ -2603,6 +2620,16 @@
       "from": "module-deps@>=4.0.2 <5.0.0",
       "resolved": "https://registry.npmjs.org/module-deps/-/module-deps-4.0.7.tgz"
     },
+    "moment": {
+      "version": "2.14.1",
+      "from": "moment@*",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.14.1.tgz"
+    },
+    "moment-timezone": {
+      "version": "0.3.1",
+      "from": "moment-timezone@>=0.3.0 <0.4.0",
+      "resolved": "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.3.1.tgz"
+    },
     "ms": {
       "version": "0.7.1",
       "from": "ms@0.7.1",
@@ -3735,6 +3762,11 @@
       "from": "validate-npm-package-license@>=3.0.1 <4.0.0",
       "resolved": "https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.1.tgz"
     },
+    "validator": {
+      "version": "5.4.0",
+      "from": "validator@>=5.4.0 <5.5.0",
+      "resolved": "https://registry.npmjs.org/validator/-/validator-5.4.0.tgz"
+    },
     "vary": {
       "version": "1.1.0",
       "from": "vary@>=1.1.0 <1.2.0",
@@ -3773,6 +3805,11 @@
       "version": "3.7.0",
       "from": "watchify@>=3.7.0 <4.0.0",
       "resolved": "https://registry.npmjs.org/watchify/-/watchify-3.7.0.tgz"
+    },
+    "whatwg-fetch": {
+      "version": "1.0.0",
+      "from": "whatwg-fetch@*",
+      "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz"
     },
     "whet.extend": {
       "version": "0.9.9",
