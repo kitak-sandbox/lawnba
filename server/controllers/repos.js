@@ -16,16 +16,16 @@ const validateBody = (req) => {
   req.checkBody('cron_pattern', 'cronパターンが不正です').isCronPattern();
   req.checkBody('base_branch', 'ベースブランチを入力してください').notEmpty();
 
-  const errors = req.validationErrors();
-  if (errors) {
-    res.status(422);
-    res.json(errors);
-    res.end();
-  }
+  return req.validationErrors();
 }
 
 router.post('/', function (req, res) {
-  validateBody(req);
+  const errors = validateBody(req);
+  if (errors) {
+    res.status(422);
+    res.json(errors);
+    return;
+  }
 
   const now = Date.now();
   const repo = {
@@ -42,7 +42,13 @@ router.post('/', function (req, res) {
 });
 
 router.put('/:id', function (req, res) {
-  validateBody(req);
+  const errors = validateBody(req);
+
+  if (errors) {
+    res.status(422);
+    res.json(errors);
+    return;
+  }
 
   const now = Date.now();
   const repo = {

@@ -11,10 +11,10 @@
             </div>
             <div class="level-right">
               <p class="level-item">
-                <a href="#" class="button is-medium is-primary">ジョブを実行</a>
+                <a href="javascript: void(0);" class="button is-medium is-primary" :class="{'is-loading': repo.isCreatingPullRequest, 'is-disabled': repo.isCreatingPullRequest}" @click="createPullRequest(repo)">PullReqを作成</a>
               </p>
               <p class="level-item">
-                <a href="javascript: void(0);" class="button is-medium" @click="editRepo(repo)">編集</a>
+                <a href="javascript: void(0);" class="button is-medium" :class="{'is-disabled': repo.isCreatingPullRequest}" @click="editRepo(repo)">編集</a>
               </p>
             </div>
           </div>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import "whatwg-fetch";
 
 import NavBar from './NavBar.vue'
 import RepoForm from './RepoForm.vue'
@@ -37,7 +36,7 @@ export default {
     return {
       repos: [],
       isActiveRepoForm: false,
-      editingRepo: null
+      editingRepo: null,
     };
   },
   components: {
@@ -61,6 +60,7 @@ export default {
         this.repos = repos.map((repo) => {
           repo.cronPattern = repo.cron_pattern;
           repo.baseBranch = repo.base_branch;
+          repo.isCreatingPullRequest = false;
           delete repo.cron_pattern;
           delete repo.base_branch;
           return repo;
@@ -93,6 +93,43 @@ export default {
     },
     onClickAddingRepo: function () {
       this.addRepo();
+    },
+    createPullRequest: function (repo) {
+      repo.isCreatingPullRequest = true;
+
+      fetch('/jobs', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          repoId: repo.id
+        })
+      }).then((response) => {
+        return response.json();
+      }).then((json) => {
+        let timerId = setInterval(() => {
+          fetch(`/jobs/${json.jobId}`, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          }).then((response) => {
+            return response.json();
+          }).then((json) => {
+            if (json.status !== 'pending') {
+                clearInterval(timerId);
+                repo.isCreatingPullRequest = false;
+                timerId = null;
+            }
+          });
+        }, 1000);
+      }).catch(() => {
+        // TODO: error handling
+        repo.isCreatingPullRequest = false;
+      });
     }
   }
 }

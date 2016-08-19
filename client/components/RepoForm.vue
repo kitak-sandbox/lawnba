@@ -1,6 +1,6 @@
 <template>
   <div class="modal" :class="{'is-active': isActive}">
-    <div class="modal-background"></div>
+    <div class="modal-background" @click="onClose"></div>
     <div class="modal-container">
       <div class="modal-content">
         <div class="box">
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import "whatwg-fetch";
 
 export default {
   props: ['isActive', 'editingRepo', 'onClose'],
