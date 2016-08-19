@@ -10,7 +10,8 @@
     "build": "npm-run-all --parallel build:js build:css",
     "start": "node ./bin/server.js",
     "db:migrate": "knex migrate:latest",
-    "db:rollback": "knex migrate:rollback"
+    "db:rollback": "knex migrate:rollback",
+    "ci-npm-update:install": "npm install -g ci-npm-update"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/kitak-sandbox/lawnba#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "ci-npm-update": "1.0.4",
     "cron": "^1.1.0",
     "express": "^4.14.0",
     "express-validator": "^2.20.8",
